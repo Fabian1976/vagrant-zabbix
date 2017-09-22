@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+forge 'https://forgeapi.puppetlabs.com'
+
+mod 'puppetlabs-stdlib', '4.20.0'
+mod 'puppetlabs-firewall', '1.9.0'
+mod 'puppet-selinux', '0.8.0'
+
+mod 'Fabian1976-zabbix',
+  :git => 'https://github.com/Fabian1976/zabbix.git',
+  :ref => '1.1.0'
+mod 'puppetlabs-postgresql', '5.1.0'

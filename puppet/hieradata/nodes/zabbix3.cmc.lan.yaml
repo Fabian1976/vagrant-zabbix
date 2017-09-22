@@ -1,0 +1,49 @@
+---
+roles:
+  - role::zabbix::server
+  - role::zabbix::java_gateway
+  - role::zabbix::web
+  - profile::zabbix::agent
+
+profile::zabbix::agent::zabbix_server: 'localhost'
+zabbix::base::manage_repo: true
+zabbix::db::manage_db_repo: true
+zabbix::db::use_seperate_partition: true
+zabbix::db::partition_size: '99G'
+postgresql::server::log_line_prefix: '%t %u@%d %p '
+zabbix::db::config_entry::entries:
+  'shared_buffers':
+    value: '512MB'
+  'maintenance_work_mem':
+    value: '128MB'
+  'checkpoint_segments':
+    value: 100
+  'log_timezone':
+    value: 'Europe/Amsterdam'
+  'timezone':
+    value: 'Europe/Amsterdam'
+  'log_filename':
+    value: 'postgresql-%Y-%m-%d.log'
+  'fsync':
+    value: 'on'
+  'synchronous_commit':
+    value: 'on'
+  'full_page_writes':
+    value: 'on'
+  'track_counts':
+    value: 'on'
+  'autovacuum':
+    value: 'on'
+  'autovacuum_vacuum_scale_factor':
+    value: '0.1'
+  'autovacuum_analyze_scale_factor':
+    value: '0.3'
+zabbix::db::pg_hba_rule::rules:
+  'allow beheer network to access zabbix database':
+    description: 'Open up postgresql for access from 10.4.6.0/24'
+    type: 'host'
+    database: 'zabbix'
+    user: 'zabbix'
+    address: '10.4.6.0/24'
+    auth_method: 'trust'
+zabbix::server::startsnmptrapper: 1
