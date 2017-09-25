@@ -23,7 +23,6 @@ class profile::zabbix::agent (
   $zabbix_server,
   $version = '3.2.0',
   $configure_firewall_rules = true,
-  $stage = undef
 ){
   include stdlib
   if ! defined(Class['profile::zabbix::base']) {
@@ -34,7 +33,6 @@ class profile::zabbix::agent (
   class { '::zabbix::agent':
     server                   => $zabbix_server,
     configure_firewall_rules => $configure_firewall_rules,
-    stage                    => $stage,
     require                  => Selinux::Module['zabbix_process']
   }
   if $::osfamily == 'RedHat' {
