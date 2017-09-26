@@ -39,12 +39,10 @@ class profile::zabbix::agent (
     selinux::module { 'zabbix_netlink_tcpdiag_socket':
       source      => 'puppet:///modules/profile/selinux/zabbix/zabbix_netlink_tcpdiag_socket.te',
       prefix      => '',
-      syncversion => false
     }
     selinux::module { 'zabbix_process':
       source      => 'puppet:///modules/profile/selinux/zabbix/zabbix_process.te',
       prefix      => '',
-      syncversion => false
     }
   }
 }
