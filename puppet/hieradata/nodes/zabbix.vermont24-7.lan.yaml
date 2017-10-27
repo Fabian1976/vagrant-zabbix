@@ -6,6 +6,10 @@ roles:
   - profile::zabbix::agent
 
 profile::zabbix::agent::zabbix_server: 'localhost'
+role::zabbix::server::version: '3.2.9'
+role::zabbix::web::version: '3.2.9'
+role::zabbix::java_gateway::version: '3.2.9'
+profile::zabbix::agent::version: '3.2.9'
 zabbix::base::manage_repo: true
 zabbix::db::manage_db_repo: true
 zabbix::db::use_seperate_partition: true
