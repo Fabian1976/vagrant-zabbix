@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.manage_guest = true
   config.hostmanager.ignore_private_ip = false
   config.vm.provision :hostmanager
-  config.vm.box = "bento/centos-7.3"
+  config.vm.box = "bento/centos-7.4"
   config.vm.provision :shell, path: "bootstrap.sh"
   config.vm.hostname = 'zabbix.vermont24-7.lan'
   config.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.135"
