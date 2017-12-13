@@ -46,10 +46,17 @@ zabbix::db::config_entry::entries:
     value: '0.3'
 zabbix::db::pg_hba_rule::rules:
   'allow beheer network to access zabbix database':
-    description: 'Open up postgresql for access from 10.4.6.0/24'
+    description: 'Open up postgresql for access from 10.10.10.0/24'
     type: 'host'
     database: 'zabbix'
     user: 'zabbix'
-    address: '10.4.6.0/24'
+    address: '10.10.10.0/24'
     auth_method: 'trust'
-zabbix::server::startsnmptrapper: 1
+  'allow localhost connection mios user to access zabbix database':
+    description: 'Open up postgresql for access from 127.0.0.1'
+    type: 'host'
+    database: 'zabbix'
+    user: 'mios'
+    address: '127.0.0.1'
+    auth_method: 'trust'
+#zabbix::server::startsnmptrapper: 1
