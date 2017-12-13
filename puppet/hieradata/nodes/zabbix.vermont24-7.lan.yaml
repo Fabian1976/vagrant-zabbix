@@ -5,6 +5,7 @@ roles:
   - role::zabbix::web
   - profile::zabbix::agent
 
+zabbix::params::server_ip: '10.10.10.135'
 profile::zabbix::agent::zabbix_server: 'localhost'
 role::zabbix::server::version: '3.4.4'
 role::zabbix::web::version: '3.4.4'
