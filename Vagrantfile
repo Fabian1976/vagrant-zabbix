@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
     vb.memory = 2048
-    vb.customize ["modifyvm", :id, "--vram", "16"]
+    vb.customize ["modifyvm", :id, "--vram", "20"]
     file_to_disk = './tmp/large_disk.vdi'
     unless File.exist?(file_to_disk)
       vb.customize ['createhd', '--filename', file_to_disk, '--size', (100 * 1024) + 4]
