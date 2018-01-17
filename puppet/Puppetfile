@@ -8,5 +8,5 @@ mod 'puppet-selinux', '0.8.0'
 
 mod 'Fabian1976-zabbix',
   :git => 'https://github.com/Fabian1976/zabbix.git',
-  :ref => '1.1.0'
+  :ref => '1.2.2'
 mod 'puppetlabs-postgresql', '5.1.0'
