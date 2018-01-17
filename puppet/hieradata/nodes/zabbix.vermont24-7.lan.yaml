@@ -1,23 +1,14 @@
 ---
 roles:
+  - role::postgresql::server
   - role::zabbix::server
-  - role::zabbix::java_gateway
-  - role::zabbix::web
-  - profile::zabbix::agent
 
-zabbix::params::server_ip: '10.10.10.135'
-profile::zabbix::agent::zabbix_server: 'localhost'
-role::zabbix::server::version: '3.4.4'
-role::zabbix::web::version: '3.4.4'
-role::zabbix::java_gateway::version: '3.4.4'
-profile::zabbix::agent::version: '3.4.4'
-zabbix::base::manage_repo: true
-zabbix::params::version: '3.4.4'
-zabbix::db::manage_db_repo: true
-zabbix::db::use_seperate_partition: true
-zabbix::db::partition_size: '99G'
+profile::postgresql::server::instancename: 'zabbix'
+profile::postgresql::server::use_seperate_partition: true
+profile::postgresql::server::manage_db_repo: true
 postgresql::server::log_line_prefix: '%t %u@%d %p '
-zabbix::db::config_entry::entries:
+
+profile::postgresql::server::config_entries:
   'shared_buffers':
     value: '512MB'
   'maintenance_work_mem':
@@ -44,7 +35,7 @@ zabbix::db::config_entry::entries:
     value: '0.1'
   'autovacuum_analyze_scale_factor':
     value: '0.3'
-zabbix::db::pg_hba_rule::rules:
+profile::postgresql::server::pg_hba_rules:
   'allow beheer network to access zabbix database':
     description: 'Open up postgresql for access from 10.10.10.0/24'
     type: 'host'
@@ -59,4 +50,3 @@ zabbix::db::pg_hba_rule::rules:
     user: 'mios'
     address: '127.0.0.1/32'
     auth_method: 'trust'
-#zabbix::server::startsnmptrapper: 1

@@ -2,11 +2,9 @@
 
 forge 'https://forgeapi.puppetlabs.com'
 
-mod 'puppetlabs-stdlib', '4.20.0'
-mod 'puppetlabs-firewall', '1.9.0'
-mod 'puppet-selinux', '0.8.0'
-
-mod 'Fabian1976-zabbix',
-  :git => 'https://github.com/Fabian1976/zabbix.git',
-  :ref => '1.2.2'
-mod 'puppetlabs-postgresql', '5.1.0'
+mod 'puppetlabs-lvm', '0.7.0'
+mod 'puppetlabs-stdlib', '4.13.1'
+mod 'puppetlabs-firewall', '1.11.0'
+mod 'puppet-selinux', '1.5.1'
+mod 'puppetlabs-postgresql', '4.7.1'
+mod 'puppet-zabbix', '6.1.0'
