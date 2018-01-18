@@ -24,7 +24,7 @@ class profile::postgresql::server (
   String $partition_fs_type = 'xfs',
   Array $db_disk = [ '/dev/sdb' ],
   $db_partition_size = undef,
-  $postgres_password = 'postgres',
+  String $postgres_password = 'postgres',
 ){
   assert_type(Array, $db_disk) | $expected, $actual | {
     fail "Parameter ${title}::db_disk should be '${expected}', not '${actual}'."

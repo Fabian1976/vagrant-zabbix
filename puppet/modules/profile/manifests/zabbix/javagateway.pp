@@ -1,6 +1,6 @@
-# == Class: profile::zabbix::web
+# == Class: profile::zabbix::javagateway
 #
-# Install zabbix-web with base configuration
+# Install zabbix JAVA-gateway with base configuration
 #
 # === Parameters
 #
@@ -10,26 +10,20 @@
 #
 # Fabian van der Hoeven <fabian.vanderhoeven@vermont24-7.com>
 #
-class profile::zabbix::web (
+class profile::zabbix::javagateway (
+  String $listenip = '127.0.0.1',
   Boolean $configure_firewall_rules = true,
-  Boolean $ssl_access = false,
-){
-  class { '::zabbix::web':
-    zabbix_url  => 'zabbix.vermont24-7.lan',
+) {
+  class {'::zabbix::javagateway':
+    listenip => $listenip
   }
-  include apache::mod::php
   if $configure_firewall_rules {
-    if ssl_access {
-      $webport = '443'
-    } else {
-      $webport = '80'
-    }
     $iptable_entries = {
-      '200 Zabbix web access' => {
+      '200 Zabbix JAVA-gateway' => {
         chain  => $::input_chain_name,
         proto  => 'tcp',
         action => 'accept',
-        dport  => $webport,
+        dport  => $::zabbix::javagateway::listenport,
       }
     }
     create_resources('firewall', $iptable_entries)

@@ -1,8 +1,8 @@
 ---
 roles:
-  - role::postgresql::server
-  - role::zabbix::server
+  - role::zabbix::full_server
 
+profile::zabbix::agent::listenip: '127.0.0.1'
 profile::postgresql::server::instancename: 'zabbix'
 profile::postgresql::server::use_seperate_partition: true
 profile::postgresql::server::manage_db_repo: true

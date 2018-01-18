@@ -4,25 +4,33 @@
 #
 # === Parameters
 #
-# $version:
-#   This parameter allows you to set a specifiec version. Defaults to 2.4.5
 #
-# === Variables
 #
 # === Authors
 #
 # Fabian van der Hoeven <fabian.vanderhoeven@vermont24-7.com>
 #
 class profile::zabbix::server (
-  $agent_server_ip = '127.0.0.1',
-  $agent_listenip = '127.0.0.1'
+  Boolean $configure_gateway = true,
+  Boolean $configure_firewall_rules = true,
 ) {
-  class { 'zabbix':
-    zabbix_url => 'zabbix.vermont24-7.lan'
+  if $configure_gateway {
+    class { 'zabbix::server':
+      javagateway => $::profile::zabbix::javagateway::listenip
+    }
+  } else {
+    class { 'zabbix::server':
+    }
   }
-  include apache::mod::php
-  class {'zabbix::agent':
-    server   => $agent_server_ip,
-    listenip => $agent_listenip
+  if $configure_firewall_rules {
+    $iptable_entries = {
+      '200 Zabbix server' => {
+        chain  => $::input_chain_name,
+        proto  => 'tcp',
+        action => 'accept',
+        dport  => $::zabbix::server::listenport,
+      }
+    }
+    create_resources('firewall', $iptable_entries)
   }
 }
