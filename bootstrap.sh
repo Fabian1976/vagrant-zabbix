@@ -9,6 +9,7 @@ systemctl enable haveged
 #set correct timezone
 rm -f /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+systemctl restart rsyslog
 
 #Install puppet repo
 yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
