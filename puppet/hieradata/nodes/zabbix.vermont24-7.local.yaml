@@ -7,6 +7,7 @@ profile::postgresql::server::instancename: 'zabbix'
 profile::postgresql::server::use_seperate_partition: true
 profile::postgresql::server::manage_db_repo: true
 postgresql::server::log_line_prefix: '%t %u@%d %p '
+zabbix::agent::serveractive: '127.0.0.1'
 
 profile::postgresql::server::config_entries:
   'shared_buffers':
