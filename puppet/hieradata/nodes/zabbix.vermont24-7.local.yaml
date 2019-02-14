@@ -2,6 +2,10 @@
 roles:
   - role::zabbix::full_server
 
+zabbix::zabbix_package_state: '3.4.10'
+zabbix::agent::zabbix_package_state: '3.4.10'
+zabbix::javagateway::zabbix_package_state: '3.4.10'
+
 profile::zabbix::agent::listenip: '127.0.0.1'
 profile::postgresql::server::instancename: 'zabbix'
 profile::postgresql::server::use_seperate_partition: true
