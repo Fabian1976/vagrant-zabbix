@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :hostmanager
   config.vm.box = "bento/centos-7.4"
   config.vm.provision :shell, path: "bootstrap.sh"
-  config.vm.hostname = 'zabbix.vermont24-7.local'
+  config.vm.hostname = 'zabbix.mdt-cmc.local'
   config.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.135"
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
