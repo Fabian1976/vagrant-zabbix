@@ -24,3 +24,4 @@ puppet/modules/stdlib
 puppet/modules/systemd
 puppet/modules/zabbix
 puppet/modules/translate
+rpm/*
