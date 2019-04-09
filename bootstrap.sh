@@ -21,8 +21,6 @@ rm -rf /etc/puppetlabs/code/environments/production/manifests; ln -s /vagrant/pu
 rm -rf /etc/puppetlabs/code/environments/production/modules; ln -s /vagrant/puppet/modules /etc/puppetlabs/code/environments/production/modules
 rm -rf /etc/puppetlabs/code/environments/production/hieradata; ln -s /vagrant/puppet/hieradata /etc/puppetlabs/code/environments/production/hieradata
 
-ln -s /vagrant/zabbix_snmp.repo /etc/yum.repos.d/
-
 #Firewall prereq
 yum -y remove firewalld
 yum -y install iptables-services

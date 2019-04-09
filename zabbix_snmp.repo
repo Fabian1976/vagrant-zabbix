@@ -1,5 +1,0 @@
-[zabbix_snmp]
-name=zabbix_snmp
-baseurl=file:///vagrant/zabbix_snmp_repo
-gpgcheck=0
-enabled=1

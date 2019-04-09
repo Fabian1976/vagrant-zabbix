@@ -58,3 +58,5 @@ profile::postgresql::server::pg_hba_rules:
     user: 'mios'
     address: '127.0.0.1/32'
     auth_method: 'trust'
+zabbix::startsnmptrapper: '1'
+zabbix::snmptrapperfile: '/var/log/zabbix/zabbix_traps.tmp'
