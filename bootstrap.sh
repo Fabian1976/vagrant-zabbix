@@ -13,7 +13,6 @@ systemctl restart rsyslog
 
 #Install puppet repo
 yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-#http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 #Install puppet
 yum -y install puppet
 #Remove default manifests and modules and replace them with the one from the vagrant share
