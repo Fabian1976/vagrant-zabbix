@@ -17,4 +17,11 @@ class role::zabbix::full_server (
   }
   include apache::mod::php
   include profile::zabbix::agent
+  if $::facts['selinux'] == true {
+    selboolean{[ 'httpd_can_network_connect', 'httpd_can_network_connect_db' ]:
+      persistent => true,
+      value      => 'on',
+    }
+  }
+
 }
