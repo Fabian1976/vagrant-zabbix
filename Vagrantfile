@@ -10,8 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.manage_guest = true
   config.hostmanager.ignore_private_ip = false
   config.vm.provision :hostmanager
-  config.vm.box = "bento/centos-7.4"
-  config.vm.provision :shell, path: "bootstrap.sh"
+#  config.vm.box = "bento/centos-7.4"
+  config.vm.box = "cmc/cis-centos76"
+  config.vm.synced_folder 'puppet/hieradata', '/etc/puppetlabs/code/environments/production/hieradata/'
+  config.vm.synced_folder 'puppet/manifests', '/etc/puppetlabs/code/environments/production/manifests/'
+  config.vm.synced_folder 'puppet/modules', '/etc/puppetlabs/code/environments/production/modules/'
+  config.vm.provision :shell,
+    path: "bootstrap.sh",
+    upload_path: "/home/vagrant/bootstrap.sh"
   config.vm.hostname = 'zabbix.mdt-cmc.local'
   config.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.135"
   config.vm.provider "virtualbox" do |vb|
