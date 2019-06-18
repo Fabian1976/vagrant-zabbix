@@ -24,4 +24,5 @@ puppet/modules/stdlib
 puppet/modules/systemd
 puppet/modules/zabbix
 puppet/modules/translate
+puppet/modules/inifile
 rpm/*
