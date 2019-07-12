@@ -26,3 +26,11 @@ puppet/modules/zabbix
 puppet/modules/translate
 puppet/modules/inifile
 rpm/*
+puppet/modules/puppetserver_gem
+puppet/modules/puppetserver
+puppet/modules/puppetdb
+puppet/modules/hiera
+puppet/modules/fw
+puppet/modules/core
+puppet/modules/augeasproviders_core
+puppet/modules/augeas
