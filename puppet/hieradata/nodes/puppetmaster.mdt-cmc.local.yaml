@@ -18,5 +18,5 @@ core::profile::puppet::hiera::backends:
 core::profile::puppet::hiera::hierarchy:
   - 'nodes/%{literal("%")}{::trusted.certname}'
   - 'clusters/%{literal("%")}{cluster}'
-  - 'defaults'
   - 'defaults/%{literal("%")}{::osfamily}'
+  - 'defaults'
