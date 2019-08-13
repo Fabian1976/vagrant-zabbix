@@ -17,3 +17,4 @@ mod 'puppet-fw',
   :git => 'git@github.com:ConclusionMC/puppet-fw.git',
   :ref => 'v0.1.2'
 mod 'puppet-zabbix', '6.7.0'
+mod 'maestrodev-rvm', '1.13.1'

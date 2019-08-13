@@ -34,3 +34,5 @@ puppet/modules/fw
 puppet/modules/core
 puppet/modules/augeasproviders_core
 puppet/modules/augeas
+puppet/modules/rvm
+puppet/modules/gnupg
