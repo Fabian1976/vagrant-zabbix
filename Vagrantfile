@@ -16,6 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppetmaster.vm.network 'private_network', bridge: 'vboxnet5', ip: '10.10.10.32'
 
     puppetmaster.vm.provider 'virtualbox' do |vb|
+      vb.customize ["modifyvm", :id, "--paravirtprovider", "none"]
       vb.memory = 4096
       vb.customize ['modifyvm', :id, '--vram', '20']
       file_to_disk = './tmp/puppetmaster.vdi'
@@ -39,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     zabbix34.vm.hostname = 'zabbix34.mdt-cmc.local'
     zabbix34.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.135"
     zabbix34.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+      vb.customize ["modifyvm", :id, "--paravirtprovider", "none"]
       vb.memory = 2048
       vb.customize ["modifyvm", :id, "--vram", "20"]
       file_to_disk = './tmp/zabbix34_dbdisk.vdi'
@@ -55,12 +56,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       path: "bootstrap.sh",
       upload_path: "/home/vagrant/bootstrap.sh"
   end
-  config.vm.define 'zabbix42', autostart: false do |zabbix42|
+  config.vm.define 'zabbix42', autostart: true do |zabbix42|
     zabbix42.vm.box = "cmc/cis-centos76"
     zabbix42.vm.hostname = 'zabbix42.mdt-cmc.local'
     zabbix42.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.136"
     zabbix42.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+      vb.customize ["modifyvm", :id, "--paravirtprovider", "none"]
       vb.memory = 2048
       vb.customize ["modifyvm", :id, "--vram", "20"]
       file_to_disk = './tmp/zabbix42_dbdisk.vdi'
