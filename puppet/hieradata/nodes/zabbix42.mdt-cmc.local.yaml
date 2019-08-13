@@ -1,6 +1,11 @@
 ---
 roles:
   - role::zabbix::full_server
+  - core::profile::rvm::client
+
+rvm::system_rubies:
+  'ruby-2.3.3':
+    default_use: true
 
 zabbix::zabbix_version: '4.2'
 zabbix::zabbix_package_state: '4.2.4'
