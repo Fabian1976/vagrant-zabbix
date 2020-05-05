@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.ignore_private_ip = false
   config.vm.provision :hostmanager
   config.vm.define 'puppetmaster', primary: true do |puppetmaster|
-    puppetmaster.vm.box = 'cmc/cis-centos76'
+    puppetmaster.vm.box = 'cmc/cis-centos77'
     puppetmaster.vm.hostname = 'puppetmaster.mdt-cmc.local'
     puppetmaster.vm.network 'private_network', bridge: 'vboxnet5', ip: '10.10.10.32'
 
@@ -36,7 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       upload_path: '/home/vagrant/bootstrap.sh'
   end
   config.vm.define 'zabbix34', autostart: false do |zabbix34|
-    zabbix34.vm.box = "cmc/cis-centos76"
+    zabbix34.vm.box = "cmc/cis-centos77"
     zabbix34.vm.hostname = 'zabbix34.mdt-cmc.local'
     zabbix34.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.135"
     zabbix34.vm.provider "virtualbox" do |vb|
@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       upload_path: "/home/vagrant/bootstrap.sh"
   end
   config.vm.define 'zabbix42', autostart: true do |zabbix42|
-    zabbix42.vm.box = "cmc/cis-centos76"
+    zabbix42.vm.box = "cmc/cis-centos77"
     zabbix42.vm.hostname = 'zabbix42.mdt-cmc.local'
     zabbix42.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.136"
     zabbix42.vm.provider "virtualbox" do |vb|
