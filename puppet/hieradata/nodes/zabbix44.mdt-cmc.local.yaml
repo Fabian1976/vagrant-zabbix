@@ -1,0 +1,67 @@
+---
+roles:
+  - role::zabbix::full_server
+  - core::profile::rvm::client
+
+rvm::system_rubies:
+  'ruby-2.3.3':
+    default_use: true
+
+zabbix::zabbix_version: '4.4'
+zabbix::zabbix_package_state: '4.4.6'
+zabbix::agent::zabbix_version: '4.4'
+zabbix::agent::zabbix_package_state: '4.4.6'
+zabbix::javagateway::zabbix_version: '4.4'
+zabbix::javagateway::zabbix_package_state: '4.4.6'
+
+profile::zabbix::agent::listenip: '127.0.0.1'
+profile::postgresql::server::instancename: 'zabbix'
+profile::postgresql::server::use_seperate_partition: true
+profile::postgresql::server::manage_db_repo: true
+postgresql::server::log_line_prefix: '%t %u@%d %p '
+zabbix::agent::serveractive: '127.0.0.1'
+
+profile::postgresql::server::config_entries:
+  'shared_buffers':
+    value: '512MB'
+  'maintenance_work_mem':
+    value: '128MB'
+  'checkpoint_segments':
+    value: 100
+  'log_timezone':
+    value: 'Europe/Amsterdam'
+  'timezone':
+    value: 'Europe/Amsterdam'
+  'log_filename':
+    value: 'postgresql-%Y-%m-%d.log'
+  'fsync':
+    value: 'on'
+  'synchronous_commit':
+    value: 'on'
+  'full_page_writes':
+    value: 'on'
+  'track_counts':
+    value: 'on'
+  'autovacuum':
+    value: 'on'
+  'autovacuum_vacuum_scale_factor':
+    value: '0.1'
+  'autovacuum_analyze_scale_factor':
+    value: '0.3'
+profile::postgresql::server::pg_hba_rules:
+  'allow beheer network to access zabbix database':
+    description: 'Open up postgresql for access from 10.10.10.0/24'
+    type: 'host'
+    database: 'zabbix'
+    user: 'zabbix'
+    address: '10.10.10.0/24'
+    auth_method: 'trust'
+  'allow localhost connection mios user to access zabbix database':
+    description: 'Open up postgresql for access from 127.0.0.1'
+    type: 'host'
+    database: 'zabbix'
+    user: 'mios'
+    address: '127.0.0.1/32'
+    auth_method: 'trust'
+zabbix::startsnmptrapper: '1'
+zabbix::snmptrapperfile: '/var/log/zabbix/zabbix_traps.tmp'
