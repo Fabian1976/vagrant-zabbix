@@ -48,6 +48,7 @@ profile::postgresql::server::config_entries:
     value: '0.1'
   'autovacuum_analyze_scale_factor':
     value: '0.3'
+profile::postgresql::server::dbversion: '9.6'
 profile::postgresql::server::pg_hba_rules:
   'allow beheer network to access zabbix database':
     description: 'Open up postgresql for access from 10.10.10.0/24'
