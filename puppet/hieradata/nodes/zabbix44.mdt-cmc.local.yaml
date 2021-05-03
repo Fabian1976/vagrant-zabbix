@@ -26,8 +26,6 @@ profile::postgresql::server::config_entries:
     value: '512MB'
   'maintenance_work_mem':
     value: '128MB'
-  'checkpoint_segments':
-    value: 100
   'log_timezone':
     value: 'Europe/Amsterdam'
   'timezone':
