@@ -24,13 +24,36 @@ yum -y remove firewalld
 yum -y install iptables-services
 
 #Install puppet repo
-yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+yum -y install https://yum.puppetlabs.com/puppet6-release-el-7.noarch.rpm
 #Install puppet-agent
-yum -y install puppet-agent-1.10.12
+yum -y install puppet-agent-6.22.1
 source /etc/profile.d/puppet-agent.sh
 
 #Install puppetserver package
-puppet resource package puppetserver ensure=2.8.1
+puppet resource package puppetserver ensure=6.15.3
+
+#Remove environment specific hiera
+rm -f /etc/puppetlabs/code/environments/production/hiera.yaml
+
+#Place global hiera 5 yaml
+cat << EOF > /etc/puppetlabs/puppet/hiera.yaml
+---
+version: 5
+
+defaults:
+  data_hash: yaml_data
+  datadir: /etc/puppetlabs/code/environments/%{environment}/hieradata
+
+hierarchy:
+  - name: 'Node data'
+    path: "nodes/%{clientcert}.yaml"
+  - name: 'Cluster data'
+    path: "clusters/%{cluster}.yaml"
+  - name: 'OS defaults'
+    path: "defaults/%{::osfamily}.yaml"
+  - name: 'Global defaults'
+    path: defaults.yaml
+EOF
 
 #Install additional packages
 yum -y install vim mlocate git rubygems

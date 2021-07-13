@@ -1,0 +1,29 @@
+{
+  "name": "cmc-mcare_o",
+  "version": "0.0.0",
+  "author": "ConclusionMC",
+  "summary": "This module has all the modules needed to enroll ConclusionMC CORE infrastructure",
+  "license": "Apache-2.0",
+  "source": "https://dev.azure.com/ConclusionMC/MDT-CMC/_git/puppet-mcare-o-control",
+  "project_page": "https://dev.azure.com/ConclusionMC/MDT-CMC/_git/puppet-mcare-o-control",
+  "issues_url": "https://dev.azure.com/ConclusionMC/MDT-CMC/_git/puppet-mcare-o-control",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "dependencies": [
+    {"name":"puppet-hiera","version_requirement":"4.0.0"},
+    {"name":"puppet-selinux","version_requirement":"3.1.0"},
+    {"name":"puppet-zabbix","version_requirement":"8.0.0"},
+    {"name":"puppetlabs-firewall","version_requirement":"2.2.0"},
+    {"name":"puppetlabs-lvm","version_requirement":"1.3.0"},
+    {"name":"puppetlabs-postgresql","version_requirement":"6.10.1"},
+    {"name":"puppetlabs-puppetdb","version_requirement":"7.4.0"},
+    {"name":"puppetlabs-stdlib","version_requirement":"6.6.0"}
+  ]
+}

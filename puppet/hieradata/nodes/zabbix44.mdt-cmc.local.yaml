@@ -1,27 +1,16 @@
 ---
 roles:
-  - role::zabbix::full_server
-  - core::profile::rvm::client
+  - core::role::zabbix::full_server
+  - core::profile::zabbix::agent
 
-rvm::system_rubies:
-  'ruby-2.3.3':
-    default_use: true
+core::profile::zabbix::agent::listenip: '127.0.0.1'
+core::profile::zabbix::agent::zabbix_server:   '127.0.0.1'
 
-zabbix::zabbix_version: '4.4'
-zabbix::zabbix_package_state: '4.4.6'
-zabbix::agent::zabbix_version: '4.4'
-zabbix::agent::zabbix_package_state: '4.4.6'
-zabbix::javagateway::zabbix_version: '4.4'
-zabbix::javagateway::zabbix_package_state: '4.4.6'
+core::profile::zabbix::full_server::manage_repo: true
 
-profile::zabbix::agent::listenip: '127.0.0.1'
-profile::postgresql::server::instancename: 'zabbix'
-profile::postgresql::server::use_seperate_partition: true
-profile::postgresql::server::manage_db_repo: true
-postgresql::server::log_line_prefix: '%t %u@%d %p '
-zabbix::agent::serveractive: '127.0.0.1'
+core::profile::zabbix::javagateway::manage_repo: true
 
-profile::postgresql::server::config_entries:
+core::profile::postgresql::server::config_entries:
   'shared_buffers':
     value: '512MB'
   'maintenance_work_mem':
@@ -46,8 +35,10 @@ profile::postgresql::server::config_entries:
     value: '0.1'
   'autovacuum_analyze_scale_factor':
     value: '0.3'
-profile::postgresql::server::dbversion: '9.6'
-profile::postgresql::server::pg_hba_rules:
+core::profile::postgresql::server::dbversion:    '9.6'
+core::profile::postgresql::server::instancename: 'zabbix'
+core::profile::postgresql::server::manage_repo:   true
+core::profile::postgresql::server::pg_hba_rules:
   'allow beheer network to access zabbix database':
     description: 'Open up postgresql for access from 10.10.10.0/24'
     type: 'host'
@@ -55,12 +46,31 @@ profile::postgresql::server::pg_hba_rules:
     user: 'zabbix'
     address: '10.10.10.0/24'
     auth_method: 'trust'
-  'allow localhost connection mios user to access zabbix database':
+  'allow localhost connection zabbix_monitor user to access zabbix database':
     description: 'Open up postgresql for access from 127.0.0.1'
     type: 'host'
     database: 'zabbix'
-    user: 'mios'
+    user: 'zabbix_monitor'
     address: '127.0.0.1/32'
     auth_method: 'trust'
-zabbix::startsnmptrapper: '1'
-zabbix::snmptrapperfile: '/var/log/zabbix/zabbix_traps.tmp'
+core::profile::postgresql::server::use_seperate_partition: true
+
+postgresql::server::log_line_prefix: '%t %u@%d %p '
+
+zabbix::zabbix_version:       '4.4'
+zabbix::zabbix_package_state: '4.4.6'
+zabbix::startsnmptrapper:     '1'
+zabbix::snmptrapperfile:      '/var/log/zabbix/zabbix_traps.tmp'
+
+zabbix::javagateway::zabbix_version:       '4.4'
+zabbix::javagateway::zabbix_package_state: '4.4.6'
+
+zabbix::agent::logfile:              '/var/log/zabbix/zabbix_agentd.log'
+zabbix::agent::logfilesize:          '100'
+zabbix::agent::logtype:              'file'
+zabbix::agent::zabbix_version:       '4.4'
+zabbix::agent::zabbix_package_state: '4.4.6'
+
+zabbix::server::logfile:     '/var/log/zabbix/zabbix_server.log'
+zabbix::server::logfilesize: '100'
+zabbix::server::logtype:     'file'

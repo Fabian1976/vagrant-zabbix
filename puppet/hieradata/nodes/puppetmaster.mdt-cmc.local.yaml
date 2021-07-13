@@ -2,21 +2,31 @@
 roles:
   - core::role::puppet::master_puppetdb
 
-core::profile::puppet::db::postgres_version: '9.6'
-core::profile::puppet::db::manage_package_repo: true
+core::profile::puppet::db::postgres_version:       '9.6'
+core::profile::puppet::db::manage_package_repo:    true
 core::profile::puppet::db::use_seperate_partition: true
+core::profile::puppet::db::vgname:                 'vg_puppetdb'
 
-core::profile::puppet::master::memory: '2g'
-core::profile::puppet::master::puppetdb_server: 'puppetmaster.mdt-cmc.local'
-core::profile::puppet::master::version: '2.8.1'
-core::profile::puppet::master::use_puppetdb: true
-
-core::profile::puppet::master::manage_hiera: true
 core::profile::puppet::hiera::backends:
   - yaml
-
 core::profile::puppet::hiera::hierarchy:
-  - 'nodes/%{literal("%")}{::trusted.certname}'
-  - 'clusters/%{literal("%")}{cluster}'
-  - 'defaults/%{literal("%")}{::osfamily}'
-  - 'defaults'
+  - name: 'Node yamls'
+    path: 'nodes/%{literal("%")}{::trusted.certname}.yaml'
+  - name: 'Cluster yamls'
+    path: 'clusters/%{literal("%")}{cluster}.yaml'
+  - name: 'OS defaults'
+    path: 'defaults/%{literal("%")}{facts.os.family}.yaml'
+  - name: 'Global defaults'
+    path: 'defaults.yaml'
+core::profile::puppet::master::manage_hiera: true
+core::profile::puppet::master::memory: '2g'
+core::profile::puppet::master::puppetdb_server: 'puppetmaster.mdt-cmc.local'
+core::profile::puppet::master::use_puppetdb: true
+core::profile::puppet::master::version: '6.15.3'
+
+hiera::hiera5_defaults:
+  datadir:   '/etc/puppetlabs/code/environments/%{literal("%")}{environment}/hieradata'
+  data_hash: 'yaml_data'
+hiera::hiera_version: '5'
+
+puppetdb::globals::version: '6.16.1'

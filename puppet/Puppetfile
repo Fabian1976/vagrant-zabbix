@@ -1,20 +1,14 @@
 #!/usr/bin/env ruby
-
 forge 'https://forgeapi.puppetlabs.com'
 
-mod 'puppetlabs-lvm', '0.7.0'
-mod 'puppetlabs-stdlib', '4.25.0'
-mod 'puppetlabs-firewall', '1.11.0'
-mod 'puppet-selinux', '1.5.1'
-mod 'puppetlabs-postgresql', '5.12.1'
+metadata
+
 mod 'cmc-core',
-  :git => 'git@github.com:ConclusionMC/puppet-core.git',
-  :ref => 'v6.3.0'
-mod 'puppet-puppetserver', '3.0.0'
-mod 'puppetlabs-puppetdb', '6.0.2'
-mod 'puppet-hiera', '3.0.0'
+  :git => 'git@ssh.dev.azure.com:v3/ConclusionMC/ORG-CMC/puppet-core',
+  :ref => 'v16.4.0'
 mod 'puppet-fw',
-  :git => 'git@github.com:ConclusionMC/puppet-fw.git',
-  :ref => 'v0.1.2'
-mod 'puppet-zabbix', '6.7.0'
-mod 'maestrodev-rvm', '1.13.1'
+  :git => 'git@ssh.dev.azure.com:v3/ConclusionMC/ORG-CMC/puppet-fw',
+  :ref => 'v1.0.0'
+mod 'cmc-puppetserver',
+  :git => 'git@ssh.dev.azure.com:v3/ConclusionMC/ORG-CMC/puppet-puppetserver',
+  :ref => 'v4.0.0'

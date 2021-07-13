@@ -20,9 +20,9 @@ sysctl -w net.ipv6.conf.default.disable_ipv6=1
 sed -i '/::1/d' /etc/hosts
 
 #Install puppet repo
-yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+yum -y install https://yum.puppetlabs.com/puppet6-release-el-7.noarch.rpm
 #Install puppet
-yum -y install puppet-agent-1.10.12
+yum -y install puppet-agent-6.22.1
 source /etc/profile.d/puppet-agent.sh
 
 sudo bash -c 'cat << EOF > /etc/puppetlabs/puppet/puppet.conf
