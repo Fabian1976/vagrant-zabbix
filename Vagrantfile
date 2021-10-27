@@ -77,7 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       path: "bootstrap.sh",
       upload_path: "/home/vagrant/bootstrap.sh"
   end
-  config.vm.define 'zabbix44', autostart: true do |zabbix44|
+  config.vm.define 'zabbix44', autostart: false do |zabbix44|
     zabbix44.vm.box = "cmc/cis-centos77"
     zabbix44.vm.hostname = 'zabbix44.mdt-cmc.local'
     zabbix44.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.44"
@@ -96,6 +96,27 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #provision
     zabbix44.vm.provision :shell,
       path: "bootstrap.sh",
+      upload_path: "/home/vagrant/bootstrap.sh"
+  end
+  config.vm.define 'zabbix52', autostart: true do |zabbix44|
+    zabbix44.vm.box = "cmc/cis-rhel84"
+    zabbix44.vm.hostname = 'zabbix52.mdt-cmc.local'
+    zabbix44.vm.network "private_network", bridge: "vboxnet5", ip: "10.10.10.52"
+    zabbix44.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+      vb.customize ["modifyvm", :id, "--vram", "20"]
+      file_to_disk = './tmp/zabbix52_dbdisk.vdi'
+      unless File.exist?(file_to_disk)
+        vb.customize ['createhd', '--filename', file_to_disk, '--size', (32 * 1024)]
+      end
+      vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
+      vb.customize ["storageattach", :id, "--storagectl", "IDE Controller", "--port", "0", "--device", "1", "--type", "dvddrive", "--medium", "../../azure_repos/ConclusionMC/ORG-CMC/packer-core_image_builder/isos/RHEL/rhel-8.4-x86_64-dvd.iso"]
+      vb.gui = true
+      vb.name = "zabbix52-server"
+    end
+    #provision
+    zabbix44.vm.provision :shell,
+      path: "bootstrap_rhel8.sh",
       upload_path: "/home/vagrant/bootstrap.sh"
   end
 end

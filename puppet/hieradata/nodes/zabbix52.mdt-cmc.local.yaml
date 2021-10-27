@@ -1,0 +1,234 @@
+---
+roles:
+  - core::role::zabbix::full_server
+  - core::profile::zabbix::agent
+  - core::profile::redhat::dnf_modules
+
+packages:
+  'gcc-c++':
+    ensure: 'present'
+
+dnf_modules:
+  'postgresql':
+    ensure: 'disabled'
+
+zabbix_release: &zabbix_release '5.2'
+zabbix_version: &zabbix_version '5.2.7'
+
+core::profile::zabbix::agent::listenip:      '127.0.0.1'
+core::profile::zabbix::agent::zabbix_server: '127.0.0.1'
+
+core::profile::zabbix::full_server::manage_repo:         true
+core::profile::zabbix::full_server::templates:
+  'Template Active Directory':
+    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Active Directory.xml'
+#  'Template App Apache by HTTP':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Apache by HTTP.xml'
+#  'Template App Cerebro':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Cerebro.xml'
+#  'Template App Elasticsearch Cluster':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Elasticsearch Cluster.xml'
+#  'Template App Elasticsearch OCP':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Elasticsearch OCP.xml'
+#  'Template App Filebeat Agent Linux':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Filebeat Agent Linux.xml'
+#  'Template App Grafana':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Grafana.xml'
+#  'Template App IPA':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App IPA.xml'
+#  'Template App Jenkins':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Jenkins.xml'
+#  'Template App Kafka':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Kafka.xml'
+#  'Template App Kafka-manager':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Kafka-manager.xml'
+#  'Template App Katello':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Katello.xml'
+#  'Template App Katello-agent':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Katello-agent.xml'
+#  'Template App Kibana':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Kibana.xml'
+#  'Template App Logstash':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Logstash.xml'
+#  'Template App Nessus':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Nessus.xml'
+#  'Template App Nginx by HTTP':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Nginx by HTTP.xml'
+#  'Template App Puppet Agent Linux':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Puppet Agent Linux.xml'
+#  'Template App Puppet Agent Windows':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Puppet Agent Windows.xml'
+#  'Template App Postfix':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Postfix.xml'
+#  'Template App Puppetforge':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Puppetforge.xml'
+#  'Template App Puppetserver':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Puppetserver.xml'
+#  'Template App RedHat Capsule':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App RedHat Capsule.xml'
+#  'Template App RedHat Satellite6':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App RedHat Satellite6.xml'
+#  'Template App RedHat Satellite6 Subscriptions':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App RedHat Satellite6 Subscriptions.xml'
+#  'Template App Rundeck':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Rundeck.xml'
+#  'Template App SSH server':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App SSH server.xml'
+#  'Template App SSS Daemon':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App SSS Daemon.xml'
+#  'Template App Stackgraph':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Stackgraph.xml'
+#  'Template App Stackstate':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Stackstate.xml'
+#  'Template App Wazuh-client':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Wazuh-client.xml'
+#  'Template App Wazuh-server':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Wazuh-server.xml'
+#  'Template App Zabbix Agent':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Zabbix Agent.xml'
+#  'Template App Zabbix Proxy':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Zabbix Proxy.xml'
+#  'Template App Zabbix Server':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Zabbix Server.xml'
+#  'Template App Zookeeper':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Zookeeper.xml'
+#  'Template App Zookeeper-manager':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template App Zookeeper-manager.xml'
+#  'Template AWS DirectConnect - Connection':
+#    templ_source: 'puppet:///modules/mcare/zabbix/templates/Template AWS DirectConnect - Connection.xml'
+#  'Template AWS DirectConnect - Discovery':
+#    templ_source: 'puppet:///modules/mcare/zabbix/templates/Template AWS DirectConnect - Discovery.xml'
+#  'Template AWS RDS':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template AWS RDS.xml'
+#  'Template AWS RDS Read-Replica':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template AWS RDS Read-Replica.xml'
+#  'Template Cloudwatch logs':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Cloudwatch logs.xml'
+#  'Template AWS ECS cluster':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template AWS ECS cluster.xml'
+#  'Template AWS ECS cluster discovery':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template AWS ECS cluster discovery.xml'
+#  'Template AWS ELBv2 target-groups':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template AWS ELBv2 target-groups.xml'
+#  'Template AWS ELBv2 discovery':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template AWS ELBv2 discovery.xml'
+#  'Template DB PostgreSQL':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template DB PostgreSQL.xml'
+#  'Template Microsoft DNS Server Performance Monitoring':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Microsoft DNS Server Performance Monitoring.xml'
+#  'Template Module Linux CPU by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Linux CPU by Zabbix agent active.xml'
+#  'Template Module Linux block devices by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Linux block devices by Zabbix agent active.xml'
+#  'Template Module Linux filesystems by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Linux filesystems by Zabbix agent active.xml'
+#  'Template Module Linux generic by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Linux generic by Zabbix agent active.xml'
+#  'Template Module Linux memory by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Linux memory by Zabbix agent active.xml'
+#  'Template Module Linux network interfaces by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Linux network interfaces by Zabbix agent active.xml'
+#  'Template Module Windows CPU by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Windows CPU by Zabbix agent active.xml'
+#  'Template Module Windows filesystems by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Windows filesystems by Zabbix agent active.xml'
+#  'Template Module Windows generic by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Windows generic by Zabbix agent active.xml'
+#  'Template Module Windows memory by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Windows memory by Zabbix agent active.xml'
+#  'Template Module Windows network by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Windows network by Zabbix agent active.xml'
+#  'Template Module Windows physical disks by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Windows physical disks by Zabbix agent active.xml'
+#  'Template Module Windows services by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Windows services by Zabbix agent active.xml'
+#  'Template Module Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Module Zabbix agent active.xml'
+#  'Template OS Linux by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template OS Linux by Zabbix agent active.xml'
+#  'Template OS Windows by Zabbix agent active':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template OS Windows by Zabbix agent active.xml'
+#  'Template OCP Fluentd':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template OCP Fluentd.xml'
+#  'Template OCP4 resource limits':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template OCP4 resource limits.xml'
+#  'Template Prometheus Keycloak':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Prometheus Keycloak.xml'
+#  'Template Prometheus OCP4':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Prometheus OCP4.xml'
+#  'Template Puppet run check':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Puppet run check.xml'
+#  'Template SSL Cert Check External':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template SSL Cert Check External.xml'
+#  'Template Wazuh alerts':
+#    templ_source: 'puppet:///modules/zabbix_templates_generic/Template Wazuh alerts.xml'
+
+core::profile::zabbix::javagateway::manage_repo: true
+
+core::profile::postgresql::server::config_entries:
+  'shared_buffers':
+    value: '512MB'
+  'maintenance_work_mem':
+    value: '128MB'
+  'log_timezone':
+    value: 'Europe/Amsterdam'
+  'timezone':
+    value: 'Europe/Amsterdam'
+  'log_filename':
+    value: 'postgresql-%Y-%m-%d.log'
+  'fsync':
+    value: 'on'
+  'synchronous_commit':
+    value: 'on'
+  'full_page_writes':
+    value: 'on'
+  'track_counts':
+    value: 'on'
+  'autovacuum':
+    value: 'on'
+  'autovacuum_vacuum_scale_factor':
+    value: '0.1'
+  'autovacuum_analyze_scale_factor':
+    value: '0.3'
+core::profile::postgresql::server::dbversion:    '9.6'
+core::profile::postgresql::server::instancename: 'zabbix'
+core::profile::postgresql::server::manage_repo:   true
+core::profile::postgresql::server::pg_hba_rules:
+  'allow beheer network to access zabbix database':
+    description: 'Open up postgresql for access from 10.10.10.0/24'
+    type: 'host'
+    database: 'zabbix'
+    user: 'zabbix'
+    address: '10.10.10.0/24'
+    auth_method: 'trust'
+  'allow localhost connection zabbix_monitor user to access zabbix database':
+    description: 'Open up postgresql for access from 127.0.0.1'
+    type: 'host'
+    database: 'zabbix'
+    user: 'zabbix_monitor'
+    address: '127.0.0.1/32'
+    auth_method: 'trust'
+core::profile::postgresql::server::use_seperate_partition: true
+
+postgresql::server::log_line_prefix: '%t %u@%d %p '
+
+zabbix::manage_resources:     true
+zabbix::zabbix_version:       *zabbix_release
+zabbix::zabbix_package_state: *zabbix_version
+zabbix::startsnmptrapper:     '1'
+zabbix::snmptrapperfile:      '/var/log/zabbix/zabbix_traps.tmp'
+
+zabbix::javagateway::zabbix_version:       *zabbix_release
+zabbix::javagateway::zabbix_package_state: *zabbix_version
+
+zabbix::agent::logfile:              '/var/log/zabbix/zabbix_agentd.log'
+zabbix::agent::logfilesize:          '100'
+zabbix::agent::logtype:              'file'
+zabbix::agent::zabbix_version:       *zabbix_release
+zabbix::agent::zabbix_package_state: *zabbix_version
+
+zabbix::logfile:     '/var/log/zabbix/zabbix_server.log'
+zabbix::logfilesize: '100'
+zabbix::logtype:     'file'
+
+zabbix::server::database_schema_path: '/usr/share/doc/zabbix-server-pgsql/'
