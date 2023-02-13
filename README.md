@@ -27,4 +27,26 @@ $ cd ..
 $ vagrant up
 ```
 
-When it is finished, you can access Zabbix via [URL](http://zabbix.vermont24-7.lan)
+When it is finished, you can access Zabbix via [URL](http://zabbix52.mdt-cmc.local)
+
+### Templates
+If you want to work on the Generic templates, please follow these instructions:
+
+From outside the VM, run this command:
+```
+./get_templates.sh
+```
+This will download the templates to your local devices.
+
+Log on to the virtual machine:
+```
+vagrant ssh zabbix52
+```
+
+And run the following:
+```
+sudo -i
+/vagrant/install_templates.sh
+```
+
+And uncomment the `core::profile::zabbix::full_server::templates:` parameter in the zabbix server yaml.

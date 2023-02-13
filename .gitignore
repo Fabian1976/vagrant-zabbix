@@ -38,3 +38,4 @@ puppet/modules/systemd
 puppet/modules/timezone
 puppet/modules/translate
 puppet/modules/zabbix
+xml-zabbix*
