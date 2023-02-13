@@ -5,7 +5,7 @@ metadata
 
 mod 'cmc-core',
   :git => 'https://-svc-AzureDevOps_CMC:zqx2rcuqfevkzwkqidgnnbuoixc26vsxsyhuzycumgqsdoehy5bq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-core',
-  :ref => 'v18.29.2'
+  :ref => 'v18.29.3'
 mod 'cmc-postfix',
   :git => 'https://-svc-AzureDevOps_CMC:zqx2rcuqfevkzwkqidgnnbuoixc26vsxsyhuzycumgqsdoehy5bq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-postfix',
   :ref => 'v2.0.0'
