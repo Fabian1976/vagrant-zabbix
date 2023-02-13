@@ -1,0 +1,14 @@
+---
+roles:
+  - 'core::role::cmc::base'
+
+core::profile::cmc::base::cis_hardening_enabled:    false
+core::profile::cmc::base::filebeat_agent_enabled:   false
+core::profile::cmc::base::ipa_client_enabled:       false
+core::profile::cmc::base::purge_yum_repos:          false
+core::profile::cmc::base::virt_guest_agent_enabled: false
+core::profile::cmc::base::wazuh_agent_enabled:      false
+
+core::profile::zabbix::agent::zabbix_server: '127.0.0.1'
+
+timezone::timezone: 'Europe/Amsterdam'

@@ -1,4 +1,39 @@
 #!/bin/bash
+# mount RHEL7
+#!/bin/sh -eux
+sed -i 's/enabled=1/enabled=0/g' /etc/yum/pluginconf.d/subscription-manager.conf
+mount /dev/sr0  /mnt
+cp /mnt/media.repo /etc/yum.repos.d/rhel_dvd.repo
+chmod 644 /etc/yum.repos.d/rhel_dvd.repo
+if ! lsb_release -a | grep -qE '^Release:\s*8'; then
+    sed -i 's/gpgcheck=0/gpgcheck=1/g' /etc/yum.repos.d/rhel_dvd.repo
+    cat >> /etc/yum.repos.d/rhel_dvd.repo << EOF
+enabled=1
+baseurl=file:///mnt/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+EOF
+else
+    cat >> /etc/yum.repos.d/rhel_dvd.repo << EOF
+enabled=0
+
+[InstallMedia-BaseOS]
+name=Red Hat Enterprise Linux 7 - BaseOS
+metadata_expire=-1
+gpgcheck=1
+enabled=1
+baseurl=file:///mnt/BaseOS/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+
+[InstallMedia-AppStream]
+name=Red Hat Enterprise Linux 7 - AppStream
+metadata_expire=-1
+gpgcheck=1
+enabled=1
+baseurl=file:///mnt/AppStream/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+EOF
+fi
+
 #install epel repo
 yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 #install entropy agent

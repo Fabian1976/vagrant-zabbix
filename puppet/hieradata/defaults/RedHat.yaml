@@ -1,0 +1,9 @@
+---
+core::profile::ntp::client::ntp_servers:
+  - '0.nl.pool.ntp.org'
+  - '1.nl.pool.ntp.org'
+  - '2.nl.pool.ntp.org'
+  - '3.nl.pool.ntp.org'
+core::profile::ntp::client::sync_method: 'chronyd'
+
+firewalld::zone_drifting: 'no'

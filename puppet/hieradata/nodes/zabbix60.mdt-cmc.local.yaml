@@ -16,8 +16,8 @@ packages:
 
 postgresql_version: &postgresql_version '14'
 
-zabbix_release: &zabbix_release '5.2'
-zabbix_version: &zabbix_version '5.2.7'
+zabbix_release: &zabbix_release '6.0'
+zabbix_version: &zabbix_version '6.0.13'
 
 core::profile::zabbix::agent::listenip:      '127.0.0.1'
 core::profile::zabbix::agent::zabbix_server: '127.0.0.1'
@@ -235,4 +235,4 @@ zabbix::logfile:     '/var/log/zabbix/zabbix_server.log'
 zabbix::logfilesize: '100'
 zabbix::logtype:     'file'
 
-zabbix::server::database_schema_path: '/usr/share/doc/zabbix-server-pgsql/'
+zabbix::server::database_schema_path: '/usr/share/zabbix-sql-scripts/postgresql'
