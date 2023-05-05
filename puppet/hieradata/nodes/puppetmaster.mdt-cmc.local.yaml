@@ -2,11 +2,9 @@
 roles:
   - core::role::puppet::master_puppetdb
 
-postgresql_version: &postgresql_version '9.6'
-
 core::profile::cmc::base::zabbix_agent_enabled: false
 
-core::profile::puppet::db::postgres_version:       *postgresql_version
+core::profile::puppet::db::postgres_version:       "%{hiera('postgresql_version')}"
 core::profile::puppet::db::manage_package_repo:    true
 core::profile::puppet::db::use_seperate_partition: true
 core::profile::puppet::db::vgname:                 'vg_puppetdb'
@@ -26,17 +24,21 @@ core::profile::puppet::hiera::hierarchy:
     path: 'common.yaml'
   - name: 'Global defaults'
     path: 'defaults.yaml'
-core::profile::puppet::master::manage_hiera: true
-core::profile::puppet::master::memory: '2g'
-core::profile::puppet::master::puppetdb_server: 'puppetmaster.mdt-cmc.local'
-core::profile::puppet::master::use_puppetdb: true
-core::profile::puppet::master::version: '6.15.3'
+core::profile::puppet::master::autosign_domains: "%{alias('puppet_autosign_domains')}"
+core::profile::puppet::master::manage_hiera:     true
+core::profile::puppet::master::memory:           '2g'
+core::profile::puppet::master::puppetdb_server:  "%{hiera('fqdn_pup001')}"
+core::profile::puppet::master::use_puppetdb:     true
+core::profile::puppet::master::version:          "%{hiera('puppetserver_version')}"
 
 hiera::hiera5_defaults:
   datadir:   '/etc/puppetlabs/code/environments/%{literal("%")}{environment}/hieradata'
   data_hash: 'yaml_data'
 hiera::hiera_version: '5'
 
-puppetdb::globals::version: '6.16.1'
+puppet::server_ssl_protocols:
+  - 'TLSv1.2'
 
-postgresql::repo::baseurl: "https://yum-archive.postgresql.org/%{hiera('postgresql_version')}/redhat/rhel-$releasever-$basearch"
+puppetdb::java_args:
+  '-Xmx': '256m'
+puppetdb::globals::version: "%{hiera('puppetdb_version')}"

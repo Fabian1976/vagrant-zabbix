@@ -9,9 +9,9 @@ puppet/Puppetfile.lock
 
 puppet/modules/apache
 puppet/modules/apt
-puppet/modules/augeasproviders_core
-puppet/modules/augeasproviders_ssh
+puppet/modules/augeasproviders*
 puppet/modules/chrony
+puppet/modules/cis_linux
 puppet/modules/concat
 puppet/modules/core
 puppet/modules/debconf
@@ -21,6 +21,7 @@ puppet/modules/firewalld
 puppet/modules/fw
 puppet/modules/hiera
 puppet/modules/inifile
+puppet/modules/kmod
 puppet/modules/logrotate
 puppet/modules/lvm
 puppet/modules/mount_core/
@@ -31,6 +32,7 @@ puppet/modules/postfix
 puppet/modules/postgresql
 puppet/modules/puppet
 puppet/modules/puppetdb
+puppet/modules/puppetserver_gem
 puppet/modules/rhsm
 puppet/modules/selinux
 puppet/modules/stdlib

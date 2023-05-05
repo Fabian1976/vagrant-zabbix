@@ -61,11 +61,11 @@ sed -i '/::1/d' /etc/hosts
 #Install puppet repo
 yum -y install https://yum.puppetlabs.com/puppet6-release-el-7.noarch.rpm
 #Install puppet-agent
-yum -y install puppet-agent-6.22.1
+yum -y install puppet-agent-6.28.0
 source /etc/profile.d/puppet-agent.sh
 
 #Install puppetserver package
-puppet resource package puppetserver ensure=6.15.3
+puppet resource package puppetserver ensure=6.20.0
 
 #Remove environment specific hiera
 rm -f /etc/puppetlabs/code/environments/production/hiera.yaml

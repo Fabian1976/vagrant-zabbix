@@ -3,12 +3,15 @@ forge 'https://forgeapi.puppetlabs.com'
 
 metadata
 
+mod 'cmc-cis_linux',
+  :git => 'https://-svc-AzureDevOps_CMC:2nkvt67awrbifglm5uezkgzbpg5ej55t3sjunbfwwlzliwm54uwq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-cis_linux',
+  :ref => 'master'
 mod 'cmc-core',
-  :git => 'https://-svc-AzureDevOps_CMC:zqx2rcuqfevkzwkqidgnnbuoixc26vsxsyhuzycumgqsdoehy5bq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-core',
-  :ref => 'v18.29.3'
+  :git => 'https://-svc-AzureDevOps_CMC:2nkvt67awrbifglm5uezkgzbpg5ej55t3sjunbfwwlzliwm54uwq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-core',
+  :ref => 'master'
 mod 'cmc-postfix',
-  :git => 'https://-svc-AzureDevOps_CMC:zqx2rcuqfevkzwkqidgnnbuoixc26vsxsyhuzycumgqsdoehy5bq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-postfix',
-  :ref => 'v2.0.0'
+  :git => 'https://-svc-AzureDevOps_CMC:2nkvt67awrbifglm5uezkgzbpg5ej55t3sjunbfwwlzliwm54uwq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-postfix',
+  :ref => 'master'
 mod 'puppet-fw',
-  :git => 'https://-svc-AzureDevOps_CMC:zqx2rcuqfevkzwkqidgnnbuoixc26vsxsyhuzycumgqsdoehy5bq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-fw',
-  :ref => 'v1.1.5'
+  :git => 'https://-svc-AzureDevOps_CMC:2nkvt67awrbifglm5uezkgzbpg5ej55t3sjunbfwwlzliwm54uwq@dev.azure.com/ConclusionMC/ORG-CMC/_git/puppet-fw',
+  :ref => 'master'

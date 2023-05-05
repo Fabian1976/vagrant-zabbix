@@ -102,7 +102,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       path: 'bootstrap.sh',
       upload_path: '/home/vagrant/bootstrap.sh'
   end
-  config.vm.define 'zabbix52', autostart: true do |zabbix52|
+  config.vm.define 'zabbix52', autostart: false do |zabbix52|
     zabbix52.vm.box = 'cmc/cis-rhel84'
     zabbix52.vm.hostname = 'zabbix52.mdt-cmc.local'
     zabbix52.vm.network 'private_network', ip: '192.168.56.52'
@@ -123,7 +123,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       path: 'bootstrap_rhel8.sh',
       upload_path: '/home/vagrant/bootstrap.sh'
   end
-  config.vm.define 'zabbix60', autostart: false do |zabbix60|
+  config.vm.define 'zabbix60', autostart: true do |zabbix60|
     zabbix60.vm.box = 'cmc/cis-rhel84'
     zabbix60.vm.hostname = 'zabbix60.mdt-cmc.local'
     zabbix60.vm.network 'private_network', ip: '192.168.56.60'
