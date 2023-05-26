@@ -27,184 +27,144 @@ core::profile::zabbix::agent::zabbix_server:          '127.0.0.1'
 
 core::profile::zabbix::full_server::manage_repo:         true
 core::profile::zabbix::full_server::templates:
-  'Active Directory':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Active Directory.xml'
-#   'Apache Kafka by JMX':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Apache Kafka by JMX.xml'
-#   'Apache by HTTP':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Apache by HTTP.xml'
-  'Barman backup':
-     templ_source: 'file:///usr/share/zabbix-templates/5.2/Barman backup.xml'
-  'CARE IDM SSO connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE IDM SSO connectivity.xml'
-  'CARE RHC connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE RHC connectivity.xml'
-  'CARE Zabbix SSO connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE Zabbix SSO connectivity.xml'
-  'CARE client SSO connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE client SSO connectivity.xml'
-  'CARE relay SES connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE relay SES connectivity.xml'
-  'CORE Elasticsearch connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Elasticsearch connectivity.xml'
-  'CORE Kafka connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Kafka connectivity.xml'
-  'CORE Linux connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Linux connectivity.xml'
-  'CORE Windows connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Windows connectivity.xml'
-  'CORE Zookeeper connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Zookeeper connectivity.xml'
-  'CORE connectivity':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE connectivity.xml'
-  'Cerebro':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Cerebro.xml'
-  'Chocolatey':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Chocolatey.xml'
-  'Curator':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Curator.xml'
-  'ESET agent':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/ESET agent.xml'
-#   'Elasticsearch Cluster by HTTP':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Elasticsearch Cluster by HTTP.xml'
-  'Entropy Daemon':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Entropy Daemon.xml'
-  'Filebeat Agent Linux':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Filebeat Agent Linux.xml'
-#   'Generic Java JMX':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Generic Java JMX.xml'
-  'Grafana':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Grafana.xml'
-#   'HAProxy by HTTP':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/HAProxy by HTTP.xml'
-#   'IIS by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/IIS by Zabbix agent active.xml'
-  'IPA':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/IPA.xml'
-  'Jenkins':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Jenkins.xml'
-  'Kafka-manager':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Kafka-manager.xml'
-#   'Kafka':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Kafka.xml'
-  'Keepalived':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Keepalived.xml'
-  'Kibana':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Kibana.xml'
-#   'Linux CPU by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux CPU by Zabbix agent active.xml'
-#   'Linux block devices by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux block devices by Zabbix agent active.xml'
-#   'Linux filesystems by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux filesystems by Zabbix agent active.xml'
-#   'Linux generic by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux generic by Zabbix agent active.xml'
-#   'Linux memory by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux memory by Zabbix agent active.xml'
-#   'Linux network interfaces by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux network interfaces by Zabbix agent active.xml'
+  # 'Active Directory':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Active Directory.xml'
+  'Apache Kafka by JMX':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Apache Kafka by JMX.xml'
+  'Apache by HTTP':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Apache by HTTP.xml'
+  # 'Barman backup':
+  #    templ_source: 'file:///usr/share/zabbix-templates/5.2/Barman backup.xml'
+  # 'CARE IDM SSO connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE IDM SSO connectivity.xml'
+  # 'CARE RHC connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE RHC connectivity.xml'
+  # 'CARE Zabbix SSO connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE Zabbix SSO connectivity.xml'
+  # 'CARE client SSO connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE client SSO connectivity.xml'
+  # 'CARE relay SES connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CARE relay SES connectivity.xml'
+  # 'CORE Elasticsearch connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Elasticsearch connectivity.xml'
+  # 'CORE Kafka connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Kafka connectivity.xml'
+  # 'CORE Linux connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Linux connectivity.xml'
+  # 'CORE Windows connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Windows connectivity.xml'
+  # 'CORE Zookeeper connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE Zookeeper connectivity.xml'
+  # 'CORE connectivity':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/CORE connectivity.xml'
+  # 'Cerebro':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Cerebro.xml'
+  # 'Chocolatey':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Chocolatey.xml'
+  # 'Curator':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Curator.xml'
+  # 'ESET agent':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/ESET agent.xml'
+  'Elasticsearch Cluster by HTTP':
+    templ_source: 'file:///usr/share/zabbix-templates/6.2/Elasticsearch Cluster by HTTP.xml'
+  # 'Entropy Daemon':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Entropy Daemon.xml'
+  # 'Filebeat Agent Linux':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Filebeat Agent Linux.xml'
+  'Generic Java JMX':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Generic Java JMX.xml'
+  # 'Grafana':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Grafana.xml'
+  'HAProxy by HTTP':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/HAProxy by HTTP.xml'
+  'IIS by Zabbix agent active':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/IIS by Zabbix agent active.xml'
+  # 'IPA':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/IPA.xml'
+  # 'Jenkins':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Jenkins.xml'
+  # 'Kafka-manager':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Kafka-manager.xml'
+  # 'Keepalived':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Keepalived.xml'
+  # 'Kibana':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Kibana.xml'
 #   'Linux updates through Ansible by Zabbix agent active':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux updates through Ansible by Zabbix agent active.xml'
-#   'Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Zabbix agent active.xml'
-#   'Linux by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Linux by Zabbix agent active.xml'
-  'Logstash':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Logstash.xml'
-  'Microsoft DNS Server Performance Monitoring':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Microsoft DNS Server Performance Monitoring.xml'
-#   'MongoDB':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/MongoDB.xml'
-#   'MySQL by Zabbix agent':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/MySQL by Zabbix agent.xml'
+  'Zabbix agent active':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Zabbix agent active.xml'
+  'Linux by Zabbix agent active':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Linux by Zabbix agent active.xml'
+  # 'Logstash':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Logstash.xml'
+  # 'Microsoft DNS Server Performance Monitoring':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Microsoft DNS Server Performance Monitoring.xml'
+  'MySQL by Zabbix agent':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/MySQL by Zabbix agent.xml'
 #   'NTP Service':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/NTP Service.xml'
-  'Nessus':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Nessus.xml'
-#   'Nginx by HTTP':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Nginx by HTTP.xml'
+  # 'Nessus':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Nessus.xml'
+  'Nginx by HTTP':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Nginx by HTTP.xml'
 #   'Oracle by ODBC':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/Oracle by ODBC.xml'
-  'Postfix':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Postfix.xml'
+  # 'Postfix':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Postfix.xml'
 #   'PostgreSQL':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/PostgreSQL.xml'
-  'Puppet Agent Linux':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppet Agent Linux.xml'
-  'Puppet Agent Windows':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppet Agent Windows.xml'
-  'Puppet agent':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppet agent.xml'
-  'Puppet run check':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppet run check.xml'
-  'PuppetDB':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/PuppetDB.xml'
-  'Puppetforge':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppetforge.xml'
-  'Puppetserver':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppetserver.xml'
+  # 'Puppet agent':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppet agent.xml'
+  # 'Puppet run check':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppet run check.xml'
+  # 'PuppetDB':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/PuppetDB.xml'
+  # 'Puppetforge':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppetforge.xml'
+  # 'Puppetserver':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Puppetserver.xml'
 #   'RabbitMQ cluster by HTTP':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/RabbitMQ cluster by HTTP.xml'
 #   'RabbitMQ node by HTTP':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/RabbitMQ node by HTTP.xml'
-  'RedHat Capsule':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/RedHat Capsule.xml'
-  'Rundeck':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Rundeck.xml'
-  'SSH server':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/SSH server.xml'
-  'SSL Cert Check External':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/SSL Cert Check External.xml'
-  'SSS Daemon':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/SSS Daemon.xml'
+  # 'RedHat Capsule':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/RedHat Capsule.xml'
+  # 'Rundeck':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Rundeck.xml'
+  # 'SSH server':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/SSH server.xml'
+  # 'SSL Cert Check External':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/SSL Cert Check External.xml'
+  # 'SSS Daemon':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/SSS Daemon.xml'
 #   'Squid HTTP-proxy':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/Squid HTTP-proxy.xml'
 #   'Squid SNMP':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/Squid SNMP.xml'
-  'WSUS':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/WSUS.xml'
-  'Wazuh agent':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Wazuh agent.xml'
-  'Wazuh alerts':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Wazuh alerts.xml'
-  'Wazuh-client':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Wazuh-client.xml'
-  'Wazuh-server':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Wazuh-server.xml'
-#   'Windows CPU by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows CPU by Zabbix agent active.xml'
-#   'Windows filesystems by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows filesystems by Zabbix agent active.xml'
-#   'Windows generic by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows generic by Zabbix agent active.xml'
-#   'Windows memory by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows memory by Zabbix agent active.xml'
-#   'Windows network by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows network by Zabbix agent active.xml'
-#   'Windows physical disks by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows physical disks by Zabbix agent active.xml'
-#   'Windows scheduled tasks and powershell scheduled jobs by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows scheduled tasks and powershell scheduled jobs by Zabbix agent active.xml'
-#   'Windows server failover cluster by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows server failover cluster by Zabbix agent active.xml'
-#   'Windows services by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows services by Zabbix agent active.xml'
-#   'Windows update and Windows server update services by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows update and Windows server update services by Zabbix agent active.xml'
-#   'Windows by Zabbix agent active':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Windows by Zabbix agent active.xml'
-  'Zabbix LDAP Sync':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Zabbix LDAP Sync.xml'
-#   'Zabbix Proxy':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Zabbix Proxy.xml'
-#   'Zabbix Server':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Zabbix Server.xml'
+  # 'WSUS':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/WSUS.xml'
+  # 'Wazuh agent':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Wazuh agent.xml'
+  # 'Wazuh alerts':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Wazuh alerts.xml'
+  # 'Wazuh-server':
+  #   templ_source: 'file:///usr/share/zabbix-templates/5.2/Wazuh-server.xml'
+  'Windows scheduled tasks and powershell scheduled jobs by Zabbix agent active':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Windows scheduled tasks and powershell scheduled jobs by Zabbix agent active.xml'
+  'Windows server failover cluster by Zabbix agent active':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Windows server failover cluster by Zabbix agent active.xml'
+  'Windows update and Windows server update services by Zabbix agent active':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Windows update and Windows server update services by Zabbix agent active.xml'
+  'Windows by Zabbix agent active':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Windows by Zabbix agent active.xml'
+  'Zabbix proxy health':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Zabbix proxy health.xml'
+  'Zabbix server health':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Zabbix server health.xml'
 #   'Zookeeper by HTTP':
 #     templ_source: 'file:///usr/share/zabbix-templates/5.2/Zookeeper by HTTP.xml'
-  'Zookeeper-manager':
-    templ_source: 'file:///usr/share/zabbix-templates/5.2/Zookeeper-manager.xml'
-#   'Zookeeper':
-#     templ_source: 'file:///usr/share/zabbix-templates/5.2/Zookeeper.xml'
+  #  'Zookeeper-manager':
+  #    templ_source: 'file:///usr/share/zabbix-templates/5.2/Zookeeper-manager.xml'
 
 core::profile::zabbix::javagateway::manage_repo: true
 
@@ -256,6 +216,7 @@ core::profile::postgresql::server::use_seperate_partition: true
 postgresql::server::log_line_prefix: '%t %u@%d %p '
 
 zabbix::manage_resources:     true
+zabbix::cachesize:            '32M'
 zabbix::zabbix_version:       "%{hiera('zabbix_release')}"
 zabbix::zabbix_package_state: "%{hiera('zabbix_version')}"
 zabbix::startsnmptrapper:     '1'

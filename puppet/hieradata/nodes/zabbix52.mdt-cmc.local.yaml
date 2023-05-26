@@ -7,6 +7,36 @@ dnf_modules:
     ensure: 'disabled'
     before: 'Package[postgresql-server]'
 
+files:
+  zabbix_home:
+    ensure:  'directory'
+    path:    '/var/lib/zabbix'
+    seltype: 'zabbix_var_lib_t'
+    owner:   'zabbix'
+    group:   'zabbix'
+    mode:    '0700'
+    require: 'Class[Zabbix]'
+  zabbix_pgpass:
+    ensure:  'file'
+    path:    '/var/lib/zabbix/.pgpass'
+    seltype: 'zabbix_var_lib_t'
+    content: "127.0.0.1:5432:postgres:zbx_monitor:%{hiera('zbx_monitor_password')}"
+    owner:   'zabbix'
+    group:   'zabbix'
+    mode:    '0600'
+  zabbix_postgresql_scripts:
+    ensure:  'directory'
+    path:    '/var/lib/zabbix/postgresql'
+    source:  'file:///usr/share/zabbix-templates/5.2/PostgreSQL'
+    require: 'File[zabbix_home]'
+    recurse: true
+    purge:   true
+    mode:    '0755'
+  pg_isready:
+    ensure: 'link'
+    path:   '/usr/bin/pg_isready'
+    target: "/usr/pgsql-%{hiera('core::profile::postgresql::server::dbversion')}/bin/pg_isready"
+
 packages:
   'gcc-c++':
     ensure: 'present'
@@ -18,6 +48,15 @@ postgresql_version: &postgresql_version '14'
 
 zabbix_release: &zabbix_release '5.2'
 zabbix_version: &zabbix_version '5.2.7'
+
+core::profile::cmc::base::puppet_service_ensure: 'stopped'
+core::profile::cmc::base::selinux_mode:          'permissive'
+
+core::profile::zabbix::agent::apply_selinux_policies: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
+zabbix::agent::manage_selinux: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
+zabbix::server::manage_selinux: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
+zabbix::manage_selinux: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
+core::profile::openssh::server::apply_selinux_policies: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
 
 core::profile::zabbix::agent::listenip:      '127.0.0.1'
 core::profile::zabbix::agent::zabbix_server: '127.0.0.1'
@@ -206,52 +245,68 @@ core::profile::zabbix::full_server::manage_repo:         true
 core::profile::zabbix::javagateway::manage_repo: true
 
 core::profile::postgresql::server::config_entries:
-  'shared_buffers':
-    value: '512MB'
-  'maintenance_work_mem':
-    value: '128MB'
-  'log_timezone':
-    value: 'Europe/Amsterdam'
-  'timezone':
-    value: 'Europe/Amsterdam'
-  'log_filename':
-    value: 'postgresql-%Y-%m-%d.log'
-  'fsync':
+  autovacuum:
     value: 'on'
-  'synchronous_commit':
-    value: 'on'
-  'full_page_writes':
-    value: 'on'
-  'track_counts':
-    value: 'on'
-  'autovacuum':
-    value: 'on'
-  'autovacuum_vacuum_scale_factor':
-    value: '0.1'
-  'autovacuum_analyze_scale_factor':
+  autovacuum_analyze_scale_factor:
     value: '0.3'
+  autovacuum_vacuum_scale_factor:
+    value: '0.1'
+  fsync:
+    value: 'on'
+  full_page_writes:
+    value: 'on'
+  log_filename:
+    value: 'postgresql-%Y-%m-%d.log'
+  log_min_duration_statement:
+    value: '30000'
+  log_timezone:
+    value: 'Europe/Amsterdam'
+  maintenance_work_mem:
+    value: '128MB'
+  pg_stat_statements.track:
+    value: 'all'
+  shared_buffers:
+    value: '512MB'
+  shared_preload_libraries:
+    value: 'pg_stat_statements, timescaledb'
+  synchronous_commit:
+    value: 'on'
+  timezone:
+    value: 'Europe/Amsterdam'
+  track_counts:
+    value: 'on'
 core::profile::postgresql::server::dbversion:    *postgresql_version
+core::profile::postgresql::server::extensions:
+  pg_buffercache:
+    database: 'zabbix_server'
+  pg_stat_statements:
+    database: 'zabbix_server'
+  pgstattuple:
+    database: 'zabbix_server'
+  timescaledb:
+    database: 'zabbix_server'
 core::profile::postgresql::server::instancename: 'zabbix'
 core::profile::postgresql::server::manage_repo:   true
 core::profile::postgresql::server::pg_hba_rules:
-  'allow beheer network to access zabbix database':
-    description: 'Open up postgresql for access from 10.10.10.0/24'
-    type: 'host'
-    database: 'zabbix'
-    user: 'zabbix'
-    address: '10.10.10.0/24'
+  allow_monitoring_of_local_database:
+    description: 'Open up postgresql for access from localhost'
+    type:        'host'
+    database:    'all'
+    user:        'zbx_monitor'
+    address:     '127.0.0.1/32'
     auth_method: 'trust'
-  'allow localhost connection zabbix_monitor user to access zabbix database':
-    description: 'Open up postgresql for access from 127.0.0.1'
-    type: 'host'
-    database: 'zabbix'
-    user: 'zabbix_monitor'
-    address: '127.0.0.1/32'
-    auth_method: 'trust'
+    order:       99
 core::profile::postgresql::server::use_seperate_partition: true
+core::profile::postgresql::server::vgname:                 'vg_zabbix'
 
 postgresql::server::log_line_prefix: '%t %u@%d %p '
+postgresql::server::roles:
+  zbx_monitor:
+    superuser:     true
+    password_hash: 'zbx_monitor'
+    require:       'Class[Postgresql::Server::Service]'
 
+zabbix::cachesize:            '64M'
 zabbix::manage_resources:     true
 zabbix::zabbix_version:       *zabbix_release
 zabbix::zabbix_package_state: *zabbix_version

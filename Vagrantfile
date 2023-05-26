@@ -17,6 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     puppetmaster.vm.provider 'virtualbox' do |vb|
       vb.customize ['modifyvm', :id, '--paravirtprovider', 'none']
+      vb.cpus = 3
       vb.memory = 4096
       vb.customize ['modifyvm', :id, '--vram', '20']
       file_to_disk = './tmp/puppetmaster.vdi'
@@ -128,6 +129,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     zabbix60.vm.hostname = 'zabbix60.mdt-cmc.local'
     zabbix60.vm.network 'private_network', ip: '192.168.56.60'
     zabbix60.vm.provider 'virtualbox' do |vb|
+      vb.cpus = 3
       vb.memory = 2048
       vb.customize ['modifyvm', :id, '--vram', '20']
       file_to_disk = './tmp/zabbix60_dbdisk.vdi'
