@@ -17,7 +17,7 @@ else
 enabled=0
 
 [InstallMedia-BaseOS]
-name=Red Hat Enterprise Linux 7 - BaseOS
+name=Red Hat Enterprise Linux 8 - BaseOS
 metadata_expire=-1
 gpgcheck=1
 enabled=1
@@ -25,7 +25,7 @@ baseurl=file:///mnt/BaseOS/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
 
 [InstallMedia-AppStream]
-name=Red Hat Enterprise Linux 7 - AppStream
+name=Red Hat Enterprise Linux 8 - AppStream
 metadata_expire=-1
 gpgcheck=1
 enabled=1
@@ -35,7 +35,7 @@ EOF
 fi
 
 #install epel repo
-yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 #install entropy agent
 yum install -y haveged
 systemctl start haveged
@@ -59,7 +59,7 @@ sed -i '/::1/d' /etc/hosts
 # yum -y install iptables-services
 
 #Install puppet repo
-yum -y install https://yum.puppetlabs.com/puppet6-release-el-7.noarch.rpm
+yum -y install https://yum.puppetlabs.com/puppet6-release-el-8.noarch.rpm
 #Install puppet-agent
 yum -y install puppet-agent-6.28.0
 source /etc/profile.d/puppet-agent.sh
@@ -98,7 +98,7 @@ EOF
 yum -y install vim mlocate git rubygems
 updatedb
 gem install bundler -v 1.17.3
-gem install librarian-puppet -v 2.2.3
+gem install librarian-puppet -v 4.0.1
 
 sudo bash -c 'cat << EOF > /etc/sysconfig/iptables
 *filter
@@ -236,7 +236,7 @@ EOF'
 
 #Set autosign
 sudo bash -c 'cat << EOF > /etc/puppetlabs/puppet/autosign.conf
-*.mdt-cmc.local
+*.cmc.local
 EOF'
 
 #Start puppetserver
@@ -252,7 +252,7 @@ sudo bash -c 'cat << EOF >> /etc/puppetlabs/puppet/puppet.conf
 report          = true
 ignoreschedules = true
 daemon          = false
-server          = puppetmaster.mdt-cmc.local
+server          = puppetmaster.cmc.local
 environment     = production
 EOF'
 

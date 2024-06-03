@@ -27,7 +27,7 @@ $ cd ..
 $ vagrant up
 ```
 
-When it is finished, you can access Zabbix via [URL](http://zabbix52.mdt-cmc.local)
+When it is finished, you can access Zabbix via [URL](http://zabbix60.cmc.local)
 
 ### Templates
 If you want to work on the Generic templates, please follow these instructions:
@@ -40,7 +40,7 @@ This will download the templates to your local devices.
 
 Log on to the virtual machine:
 ```
-vagrant ssh zabbix52
+vagrant ssh zabbix60
 ```
 
 And run the following:

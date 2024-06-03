@@ -13,6 +13,9 @@ packages:
   'public_suffix':
     ensure:   '4.0.7'
     provider: 'puppet_gem'
+  'domain_name':
+    ensure: '0.5.20190701'
+    provider: 'puppet_gem'
 
 core::profile::cmc::base::puppet_service_ensure: 'stopped'
 core::profile::cmc::base::selinux_mode:          'permissive'
@@ -20,6 +23,7 @@ core::profile::cmc::base::selinux_mode:          'permissive'
 core::profile::zabbix::agent::apply_selinux_policies: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
 zabbix::agent::manage_selinux: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
 zabbix::server::manage_selinux: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
+zabbix::manage_selinux: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
 core::profile::openssh::server::apply_selinux_policies: false # Speed up puppet-run. Downside, selinux_mode must be set to permissive
 
 core::profile::zabbix::agent::listenip:               '127.0.0.1'
@@ -28,6 +32,7 @@ core::profile::zabbix::agent::zabbix_server:          '127.0.0.1'
 core::profile::zabbix::full_server::keep_templates_in_sync: true
 core::profile::zabbix::full_server::manage_repo:            true
 core::profile::zabbix::full_server::templates:
+  # Generic
   'Active Directory':
     templ_source: 'file:///usr/share/zabbix-templates/6.0/Active Directory.xml'
   'Apache Kafka by JMX':
@@ -82,6 +87,8 @@ core::profile::zabbix::full_server::templates:
     templ_source: 'file:///usr/share/zabbix-templates/6.0/IIS by Zabbix agent active.xml'
   'Jenkins':
     templ_source: 'file:///usr/share/zabbix-templates/6.0/Jenkins.xml'
+  'Kafka-manager consumer discovery':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Kafka-manager consumer discovery.xml'
   'Kafka-manager':
     templ_source: 'file:///usr/share/zabbix-templates/6.0/Kafka-manager.xml'
   'Keepalived':
@@ -170,6 +177,31 @@ core::profile::zabbix::full_server::templates:
     templ_source: 'file:///usr/share/zabbix-templates/6.0/Zookeeper by HTTP.xml'
   'Zookeeper-manager':
     templ_source: 'file:///usr/share/zabbix-templates/6.0/Zookeeper-manager.xml'
+  # AWS
+  'AWS Cloudwatch logs':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS Cloudwatch logs.xml'
+  'AWS DirectConnect - Connection':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS DirectConnect - Connection.xml'
+  'AWS DirectConnect - Discovery':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS DirectConnect - Discovery.xml'
+  'AWS ECS cluster':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS ECS cluster.xml'
+  'AWS ECS cluster discovery':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS ECS cluster discovery.xml'
+  'AWS ELBv2 target-groups':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS ELBv2 target-groups.xml'
+  'AWS ELBv2 discovery':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS ELBv2 discovery.xml'
+  'AWS RDS':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS RDS.xml'
+  'AWS RDS Read-Replica':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS RDS Read-Replica.xml'
+  'AWS RDS discovery':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/AWS RDS discovery.xml'
+  'Keycloak':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Keycloak.xml'
+  'Prometheus Keycloak':
+    templ_source: 'file:///usr/share/zabbix-templates/6.0/Prometheus Keycloak.xml'
 
 core::profile::zabbix::javagateway::manage_repo: true
 
@@ -220,8 +252,9 @@ core::profile::postgresql::server::use_seperate_partition: true
 
 postgresql::server::log_line_prefix: '%t %u@%d %p '
 
-zabbix::manage_resources:     true
+zabbix::alertscriptspath:     '/usr/lib/zabbix/alertscripts'
 zabbix::cachesize:            '32M'
+zabbix::manage_resources:     true
 zabbix::zabbix_version:       "%{hiera('zabbix_release')}"
 zabbix::zabbix_package_state: "%{hiera('zabbix_version')}"
 zabbix::startsnmptrapper:     '1'

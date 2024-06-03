@@ -306,6 +306,7 @@ postgresql::server::roles:
     password_hash: 'zbx_monitor'
     require:       'Class[Postgresql::Server::Service]'
 
+zabbix::alertscriptspath:     '/usr/lib/zabbix/alertscripts'
 zabbix::cachesize:            '64M'
 zabbix::manage_resources:     true
 zabbix::zabbix_version:       *zabbix_release

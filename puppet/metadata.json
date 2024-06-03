@@ -4,9 +4,9 @@
   "author": "ConclusionMC",
   "summary": "This module has all the modules needed to enroll ConclusionMC CORE infrastructure",
   "license": "Apache-2.0",
-  "source": "https://dev.azure.com/ConclusionMC/MDT-CMC/_git/puppet-mcare-o-control",
-  "project_page": "https://dev.azure.com/ConclusionMC/MDT-CMC/_git/puppet-mcare-o-control",
-  "issues_url": "https://dev.azure.com/ConclusionMC/MDT-CMC/_git/puppet-mcare-o-control",
+  "source": "https://dev.azure.com/ConclusionMC/cmc-mcare/_git/puppet-mcare-o-control",
+  "project_page": "https://dev.azure.com/ConclusionMC/cmc-mcare/_git/puppet-mcare-o-control",
+  "issues_url": "https://dev.azure.com/ConclusionMC/cmc-mcare/_git/puppet-mcare-o-control",
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",

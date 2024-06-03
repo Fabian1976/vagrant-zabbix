@@ -66,7 +66,7 @@ vardir = /opt/puppetlabs/puppet/cache
 logdir = /var/log/puppetlabs/puppet
 rundir = /var/run/puppetlabs
 ssldir = /etc/puppetlabs/puppet/ssl
-server = puppetmaster.mdt-cmc.local
+server = puppetmaster.cmc.local
 
 [agent]
 report          = true

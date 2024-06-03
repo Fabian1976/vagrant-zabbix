@@ -2,6 +2,10 @@
 roles:
   - core::role::puppet::master_puppetdb
 
+dnf_modules:
+  postgresql:
+    ensure: 'disabled'
+
 core::profile::cmc::base::zabbix_agent_enabled: false
 
 core::profile::puppet::db::postgres_version:       "%{hiera('postgresql_version')}"

@@ -2,7 +2,7 @@
 roles:
   - 'core::role::cmc::base'
 
-domain_name_tux: 'mdt-cmc.local'
+domain_name_tux: 'cmc.local'
 
 fqdn_pup001:     "puppetmaster.%{hiera('domain_name_tux')}"
 fqdn_zb6001:     "zabbix60.%{hiera('domain_name_tux')}"
